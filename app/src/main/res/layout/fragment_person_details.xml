@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#37D175"
+    android:orientation="vertical"
+    tools:context=".view.fragments.PersonDetailsFragment"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="One More Step!"
+            android:textColor="@color/black"
+            android:textSize="29sp"
+            android:gravity="center">
+        </TextView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="In order to start, please fill out this form"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:paddingStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Sex"
+            android:textColor="@color/black"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="20">
+
+        </TextView>
+
+        <RadioButton
+            android:id="@+id/rbMale"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:buttonTint="@color/black"
+            android:text="Male"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck">
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/rbFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:buttonTint="@color/black"
+            android:text="Female"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck">
+
+        </RadioButton>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:textColor="@color/black"
+            android:layout_weight="20"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            >
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/etAgeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="40"
+            android:gravity="center"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck"
+            android:textColorHint="#000000"
+            android:hint="Years">
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Height"
+            android:textColor="@color/black"
+            android:layout_weight="20"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            >
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/etHeightInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="40"
+            android:autofillHints="emailAddress"
+            android:gravity="center"
+            android:hint="CM"
+            android:textColorHint="#000000"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck">
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight"
+            android:textColor="@color/black"
+            android:layout_weight="20"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            >
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/etWeightInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="40"
+            android:gravity="center"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck"
+            android:textColorHint="#000000"
+            android:hint="KG">
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayoutFitnessLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:paddingStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="How active are you"
+            android:textColor="@color/black"
+            android:layout_weight="20"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtChosenFitnessLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:visibility="visible"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:text="Click here to choose"
+            android:textAlignment="center"
+            android:background="@drawable/textview_black_border"
+            android:layout_marginEnd="5dp"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btnCalculateBMI"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:background="@drawable/button_design"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:text="Calculate BMI"
+            android:textAllCaps="false">
+
+        </Button>
+
+        <TextView
+            android:id="@+id/txtBMIResult"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:maxLength="5"
+            >
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:textAlignment="center">
+
+        <TextView
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Based on your data, the amount of calories\n you need to burn is:"
+            android:textColor="@color/black"
+            android:layout_weight="50">
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtCalorieIntakeAllowed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:text="TEST"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            android:maxLength="6">
+
+        </TextView>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnPressToRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_design"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        >
+
+    </Button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

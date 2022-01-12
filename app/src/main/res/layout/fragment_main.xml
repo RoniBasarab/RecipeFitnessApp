@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#37D175"
+    android:orientation="vertical"
+    tools:context=".view.fragments.MainFragment">
+
+    <TextView
+        android:id="@+id/txtMainWelcomeScreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="5dp"
+        android:shadowColor="@color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
+        android:text="Welcome to my fitness app!"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/txtMainDescribe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        android:lineHeight="50sp"
+        android:shadowColor="@color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
+        android:text="In this app you will be able to create your own custom diet, choose your favourite foods and assign each meal to a particular day!"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        >
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        >
+
+        <TextView
+            android:id="@+id/txtMainEmailToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_weight="70"
+            android:textColor="@color/black"
+            android:text="I wish to recieve my custom made diet to my email!"
+            >
+        </TextView>
+
+        <CheckBox
+            android:id="@+id/cbYesNoEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="20"
+            tools:ignore="TouchTargetSizeCheck"
+            android:buttonTint="@color/black"
+            >
+
+        </CheckBox>
+
+    </LinearLayout>
+
+   <LinearLayout
+       android:id="@+id/linearlayoutEmailInput"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:gravity="start"
+       android:visibility="invisible"
+       >
+       
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Enter Email:"
+           tools:ignore="Suspicious0dp"
+           android:textColor="@color/black"
+           android:layout_weight="20"
+           android:layout_marginStart="5dp"
+           android:layout_marginEnd="5dp"
+           >
+
+       </TextView>
+
+       <EditText
+           android:id="@+id/etEmailInput"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="5dp"
+           android:layout_marginEnd="5dp"
+           android:layout_weight="200"
+           android:autofillHints="emailAddress"
+           android:gravity="center"
+           android:inputType="textEmailAddress"
+           android:textColor="@color/black"
+           tools:ignore="TouchTargetSizeCheck">
+
+       </EditText>
+       
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        >
+
+        <Button
+            android:id="@+id/btnCreateYourDiet"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Create Your Diet"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"
+            android:textAllCaps="false"
+            android:background="@drawable/button_design"
+            >
+
+        </Button>
+
+    </LinearLayout>
+
+</LinearLayout>

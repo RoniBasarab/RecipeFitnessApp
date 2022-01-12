@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="button_design" parent="@android:style/Widget.Button">
+
+        <item name="android:textStyle">bold</item>
+        <item name="android:backgroundTint">@drawable/button_design</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+
+    </style>
+
+</resources>

@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/sedentary"
+        android:title="Sedentary" />
+    <item android:id="@+id/light"
+        android:title="Lightly Active" />
+    <item android:id="@+id/medium"
+        android:title="Moderately Active" />
+    <item android:id="@+id/heavy"
+        android:title="Very Active" />
+</menu>

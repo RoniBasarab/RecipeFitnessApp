@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:paddingStart="2dp"
+    android:paddingEnd="2dp"
+    android:background="@drawable/textview_transperant_border"
+    >
+    <ImageView
+        android:id="@+id/imgFoodImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="40"
+        android:src="@drawable/icon"
+        android:maxHeight="65dp"
+        android:maxWidth="65dp">
+    </ImageView>
+
+    <TextView
+        android:paddingTop="5dp"
+        android:id="@+id/tvFoodTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Recipe Name"
+        android:textSize="14sp"
+        android:layout_weight="40"
+        android:textAlignment="center"
+        android:textColor="@color/black">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvCuisine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cuisine"
+        android:layout_weight="30"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        >
+
+    </TextView>
+
+    <TextView
+        android:paddingEnd="2dp"
+        android:paddingStart="2dp"
+        android:id="@+id/tvFoodCalorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calories"
+        android:layout_weight="39"
+        android:textAlignment="viewStart"
+        android:maxLength="6"
+        android:textColor="@color/black">
+
+    </TextView>
+
+
+
+    <CheckBox
+        android:paddingEnd="2dp"
+        android:paddingStart="2dp"
+        android:id="@+id/cbChosen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="gravity"
+        android:buttonTint="@color/black"
+        >
+    </CheckBox>
+
+
+</LinearLayout>
