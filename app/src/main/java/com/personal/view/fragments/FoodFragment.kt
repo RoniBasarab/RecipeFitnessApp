@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.personal.R
 import com.personal.adapter.FoodAdapter
 import com.personal.data.repository.RecipeRepository
 import com.personal.databinding.FragmentFoodBinding
@@ -53,6 +55,8 @@ class FoodFragment : Fragment() {
     {
         binding.rvFoods.isVisible = false
         animateProgressBar(binding.pbLoadingBar)
+
+        setOnClickListeners()
         foodAdapter = FoodAdapter(RecipeRepository())
         FoodViewModel = ViewModelProvider(this).get(FoodFragmentViewModel::class.java)
         FoodViewModel.makeAPICall(foodAdapter, binding.rvFoods, binding.pbLoadingBar)
@@ -68,5 +72,16 @@ class FoodFragment : Fragment() {
         val anim = ProgressBarAnimation(progress, 500f, 1000f)
         anim.duration = 1000
         progress.startAnimation(anim)
+    }
+
+    fun setOnClickListeners()
+    {
+        binding.btnBackToPersonDetails.setOnClickListener {
+            findNavController().navigate(R.id.personDetailsFragment)
+        }
+
+        binding.btnDoneMeals.setOnClickListener {
+
+        }
     }
 }

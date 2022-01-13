@@ -1,17 +1,15 @@
 package com.personal.adapter
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.annotation.GlideModule
 import com.personal.R
 import com.personal.data.repository.Recipe
 import com.personal.data.repository.RecipeRepository
 import com.personal.databinding.ItemFoodBinding
-import com.personal.viewmodel.logger
-import java.util.*
 
-
+@GlideModule
 class FoodAdapter(
     var foodList: RecipeRepository
 )  : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>()
@@ -19,6 +17,7 @@ class FoodAdapter(
 
     class FoodViewHolder(private val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root)
     {
+
         fun bind(recipe: Recipe)
         {
             binding.tvFoodTitle.text = recipe.recipeName

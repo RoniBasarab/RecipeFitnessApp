@@ -31,5 +31,9 @@
         android:id="@+id/foodFragment"
         android:name="com.personal.view.fragments.FoodFragment"
         android:label="fragment_food"
-        tools:layout="@layout/fragment_food" />
+        tools:layout="@layout/fragment_food" >
+        <action
+            android:id="@+id/action_foodFragment_to_personDetailsFragment"
+            app:destination="@id/personDetailsFragment" />
+    </fragment>
 </navigation>

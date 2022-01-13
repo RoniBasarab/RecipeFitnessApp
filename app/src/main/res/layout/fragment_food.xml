@@ -53,7 +53,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvFoods"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="250dp"
                 android:background="@drawable/textview_black_border"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp">
@@ -72,11 +72,95 @@
 
         </FrameLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:layout_weight="30">
+
+        </TextView>
+
+
+        <EditText
+            android:id="@+id/etSearchInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="30"
+            android:textColor="@color/black">
+
+
+        </EditText>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:gravity="center"
+            android:text="TEST"
+            android:textColor="@color/red"
+            >
+        </TextView>
 
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="bottom" >
 
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnBackToPersonDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:textAllCaps="false"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/button_design"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp">
+
+            </Button>
+
+            <Button
+                android:id="@+id/btnDoneMeals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Done!"
+                android:textAllCaps="false"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/button_design"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp">
+
+            </Button>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 
 </LinearLayout>

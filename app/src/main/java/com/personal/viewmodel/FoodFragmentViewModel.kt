@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
 
 const val BASE_URL = "https://api.edamam.com/"
-val logger = "FFFF"
+val logger = "logger"
 
 class FoodFragmentViewModel : ViewModel()
 {

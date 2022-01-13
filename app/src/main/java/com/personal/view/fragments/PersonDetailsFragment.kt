@@ -2,7 +2,7 @@ package com.personal.view.fragments
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.text.InputFilter
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.PopupMenu
@@ -13,6 +13,7 @@ import com.personal.R
 import com.personal.databinding.FragmentPersonDetailsBinding
 import com.personal.utils.FitnessStatus
 import com.personal.viewmodel.PersonDetailsFragmentViewModel
+import com.personal.viewmodel.logger
 
 
 class PersonDetailsFragment : Fragment() {
@@ -29,6 +30,7 @@ class PersonDetailsFragment : Fragment() {
     ): View {
 
         _binding = FragmentPersonDetailsBinding.inflate(inflater,container,false)
+
         setupFragment()
 
         return binding.root
@@ -36,9 +38,13 @@ class PersonDetailsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.d(logger,"OnDestroyView() FRAGMENT")
         _binding = null
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
 
     private fun setupFragment()
     {
@@ -90,7 +96,7 @@ class PersonDetailsFragment : Fragment() {
 
                 binding.txtBMIResult.text = personDetailsViewModel.calcBMI(weight.toString(), height.toString())
                 binding.txtCalorieIntakeAllowed.text = personDetailsViewModel.calcCalorieIntakeNeeded(fitnessStatus,gender,weight,height,age)
-                    .toString()
+
                 binding.txtCalorieIntakeAllowed.setTextColor(Color.BLACK)
                 binding.txtCalorieIntakeAllowed.visibility = View.VISIBLE
             }
@@ -125,5 +131,4 @@ class PersonDetailsFragment : Fragment() {
         // Show the popup menu.
         popup.show()
     }
-
 }

@@ -4,5 +4,6 @@ enum class FitnessStatus {
     SEDENTARY,
     LIGHTLY,
     MODERATELY,
-    VERY
+    VERY,
+    UNINITIALIZED
 }
