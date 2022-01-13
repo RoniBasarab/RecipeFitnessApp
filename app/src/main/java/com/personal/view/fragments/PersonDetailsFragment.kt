@@ -1,6 +1,8 @@
 package com.personal.view.fragments
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.text.InputFilter
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.PopupMenu
@@ -89,6 +91,14 @@ class PersonDetailsFragment : Fragment() {
                 binding.txtBMIResult.text = personDetailsViewModel.calcBMI(weight.toString(), height.toString())
                 binding.txtCalorieIntakeAllowed.text = personDetailsViewModel.calcCalorieIntakeNeeded(fitnessStatus,gender,weight,height,age)
                     .toString()
+                binding.txtCalorieIntakeAllowed.setTextColor(Color.BLACK)
+                binding.txtCalorieIntakeAllowed.visibility = View.VISIBLE
+            }
+            else
+            {
+
+                binding.txtCalorieIntakeAllowed.setTextColor(Color.RED)
+                binding.txtCalorieIntakeAllowed.text = "FILL FORM"
                 binding.txtCalorieIntakeAllowed.visibility = View.VISIBLE
             }
         }

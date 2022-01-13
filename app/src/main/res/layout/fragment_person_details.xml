@@ -287,7 +287,7 @@
             android:textColor="@color/black"
             android:textAlignment="center"
             android:visibility="invisible"
-            android:maxLength="6">
+            android:maxLength="9">
 
         </TextView>
 

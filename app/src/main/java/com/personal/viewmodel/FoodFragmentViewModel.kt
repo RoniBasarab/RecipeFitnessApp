@@ -2,6 +2,9 @@ package com.personal.viewmodel
 
 import android.annotation.SuppressLint
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import com.personal.adapter.FoodAdapter
 import com.personal.data.repository.Recipe
@@ -34,10 +37,20 @@ class FoodFragmentViewModel : ViewModel()
         withContext(Dispatchers.IO)
         {
             try {
-                val response = retrofitBuilder.getRecipes()
-                SuccessfulRecipeHitsRepository.numberOfRecipes = response.count
+                var response = retrofitBuilder.getMeatRecipes()
+                SuccessfulRecipeHitsRepository.numberOfRecipes += response.count
                 SuccessfulRecipeHitsRepository.recipiesList.addAll(response.hits)
+
+                response = retrofitBuilder.getFishRecipes()
+                SuccessfulRecipeHitsRepository.numberOfRecipes += response.count
+                SuccessfulRecipeHitsRepository.recipiesList.addAll(response.hits)
+
+                response = retrofitBuilder.getDairyRecipes()
+                SuccessfulRecipeHitsRepository.numberOfRecipes += response.count
+                SuccessfulRecipeHitsRepository.recipiesList.addAll(response.hits)
+
                 UpdateLocalRepoLists()
+
             }catch (e: Exception)
             {
                 Log.d(logger, e.toString())
@@ -48,21 +61,23 @@ class FoodFragmentViewModel : ViewModel()
     }
 
      @SuppressLint("NotifyDataSetChanged")
-     private fun loadRecipes(adapter: FoodAdapter) {
+     private fun loadRecipes(adapter: FoodAdapter, loadingVisibility: ProgressBar) {
         val scope = CoroutineScope(Dispatchers.IO)
          scope.launch {
              getFoodRecipes()
              adapter.foodList = localFoodRepository
              GlobalScope.launch(Dispatchers.Main) {
+                 loadingVisibility.visibility = View.GONE
                  adapter.notifyDataSetChanged()
              }
          }
 
     }
 
-     fun makeAPICall(adapter: FoodAdapter)
+     fun makeAPICall(adapter: FoodAdapter, recyclerVisibility: View, loadingVisibility: ProgressBar)
     {
-        loadRecipes(adapter)
+        loadRecipes(adapter,loadingVisibility)
+        recyclerVisibility.visibility = View.VISIBLE
     }
 
     fun UpdateLocalRepoLists()

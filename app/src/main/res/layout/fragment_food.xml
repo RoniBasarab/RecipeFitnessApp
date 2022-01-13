@@ -45,15 +45,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvFoods"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp">
+            android:layout_height="match_parent">
 
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFoods"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@drawable/textview_black_border"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <ProgressBar
+                android:id="@+id/pbLoadingBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleX="0.2"
+                android:scaleY="0.2">
+
+            </ProgressBar>
+
+
+        </FrameLayout>
+
 
 
     </LinearLayout>
