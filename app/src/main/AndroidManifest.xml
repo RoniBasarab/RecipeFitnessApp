@@ -23,10 +23,15 @@
 
         <meta-data
             android:name = "keyValue"
-            android:value = "${MY_API_KEY}"
+            android:value = "${API_KEY}"
             />
         <meta-data android:name="keyId"
-            android:value="${MY_API_ID}"/>
+            android:value="${API_ID}"/>
+
+        <meta-data android:name="baseURL"
+            android:value="${BASE_URL}">
+
+        </meta-data>
 
     </application>
 

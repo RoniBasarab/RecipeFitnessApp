@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.ViewModel
+import com.personal.BuildConfig
 import com.personal.adapter.FoodAdapter
 import com.personal.data.repository.Recipe
 import com.personal.data.repository.RecipeRepository
@@ -16,14 +17,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
 
-const val BASE_URL = "https://api.edamam.com/"
 val logger = "logger"
 
 class FoodFragmentViewModel : ViewModel()
 {
     private val retrofitBuilder = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(BASE_URL)
+        .baseUrl(BuildConfig.BASE_URL)
         .build()
         .create(FoodService::class.java)
 
