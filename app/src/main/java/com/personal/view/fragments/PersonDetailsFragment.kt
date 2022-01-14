@@ -1,4 +1,5 @@
 package com.personal.view.fragments
+import android.app.Person
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -6,10 +7,12 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.annotation.MenuRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.personal.R
+import com.personal.data.repository.PersonDetails
 import com.personal.databinding.FragmentPersonDetailsBinding
 import com.personal.utils.FitnessStatus
 import com.personal.viewmodel.PersonDetailsFragmentViewModel
@@ -42,10 +45,6 @@ class PersonDetailsFragment : Fragment() {
         _binding = null
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     private fun setupFragment()
     {
         binding.rbFemale.isChecked = false
@@ -71,7 +70,7 @@ class PersonDetailsFragment : Fragment() {
         }
 
         binding.btnCalculateBMI.setOnClickListener {
-            if(!(!binding.rbMale.isChecked && !binding.rbFemale.isChecked && binding.etHeightInput.text.isNullOrEmpty() && binding.etWeightInput.text.isNullOrEmpty() && binding.etAgeInput.text.isNullOrEmpty()))
+            if((binding.rbMale.isChecked || binding.rbFemale.isChecked) && personDetailsViewModel.isDataInitialized() == false)
             {
                 val age = binding.etAgeInput.text.toString().toInt()
                 val height = binding.etHeightInput.text.toString().toInt()
@@ -80,25 +79,39 @@ class PersonDetailsFragment : Fragment() {
                 var fitnessStatus: FitnessStatus = FitnessStatus.SEDENTARY
                 val fitnessStatusChosen = binding.txtChosenFitnessLevel.text.toString()
 
+                PersonDetails.age = age
+                PersonDetails.height = height
+                PersonDetails.weight = weight
 
-                if(binding.rbMale.isChecked)
+
+                if (binding.rbMale.isChecked)
                     gender = binding.rbMale.text.toString()
                 else
                     gender = binding.rbFemale.text.toString()
 
-                when(fitnessStatusChosen)
-                {
+                when (fitnessStatusChosen) {
                     "Sedentary" -> fitnessStatus = FitnessStatus.SEDENTARY
                     "Lightly Active" -> fitnessStatus = FitnessStatus.LIGHTLY
                     "Moderately Active" -> fitnessStatus = FitnessStatus.MODERATELY
                     "Very Active" -> fitnessStatus = FitnessStatus.VERY
                 }
 
-                binding.txtBMIResult.text = personDetailsViewModel.calcBMI(weight.toString(), height.toString())
-                binding.txtCalorieIntakeAllowed.text = personDetailsViewModel.calcCalorieIntakeNeeded(fitnessStatus,gender,weight,height,age)
+                PersonDetails.fitnessStatus = fitnessStatus
+
+                binding.txtBMIResult.text =
+                    personDetailsViewModel.calcBMI(weight.toString(), height.toString())
+                binding.txtCalorieIntakeAllowed.text =
+                    personDetailsViewModel.calcCalorieIntakeNeeded(
+                        fitnessStatus,
+                        gender,
+                        weight,
+                        height,
+                        age
+                    )
 
                 binding.txtCalorieIntakeAllowed.setTextColor(Color.BLACK)
                 binding.txtCalorieIntakeAllowed.visibility = View.VISIBLE
+
             }
             else
             {

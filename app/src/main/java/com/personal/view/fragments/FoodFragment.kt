@@ -2,25 +2,23 @@ package com.personal.view.fragments
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.personal.R
 import com.personal.adapter.FoodAdapter
 import com.personal.data.repository.RecipeRepository
 import com.personal.databinding.FragmentFoodBinding
+import com.personal.utils.ProgressBarAnimation
 import com.personal.viewmodel.FoodFragmentViewModel
 import com.personal.viewmodel.logger
-import com.personal.utils.ProgressBarAnimation
-
-
-
 
 
 class FoodFragment : Fragment() {
@@ -64,6 +62,7 @@ class FoodFragment : Fragment() {
 
         binding.rvFoods.adapter = foodAdapter
         binding.rvFoods.layoutManager = LinearLayoutManager(this.context)
+        (binding.rvFoods.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
 
     }
 

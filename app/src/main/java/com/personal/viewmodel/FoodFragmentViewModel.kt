@@ -1,10 +1,8 @@
 package com.personal.viewmodel
-
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import com.personal.BuildConfig
 import com.personal.adapter.FoodAdapter
@@ -17,13 +15,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
 
+const val BASE_URL = BuildConfig.BASE_URL
 val logger = "logger"
 
 class FoodFragmentViewModel : ViewModel()
 {
     private val retrofitBuilder = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(BuildConfig.BASE_URL)
+        .baseUrl(BASE_URL)
         .build()
         .create(FoodService::class.java)
 
@@ -32,7 +31,6 @@ class FoodFragmentViewModel : ViewModel()
     private suspend fun getFoodRecipes()
     {
 
-        Log.d(logger,Thread.currentThread().toString() + "getFoodRecipes() - GET request")
 
         withContext(Dispatchers.IO)
         {
@@ -42,10 +40,6 @@ class FoodFragmentViewModel : ViewModel()
                 SuccessfulRecipeHitsRepository.recipiesList.addAll(response.hits)
 
                 response = retrofitBuilder.getFishRecipes()
-                SuccessfulRecipeHitsRepository.numberOfRecipes += response.count
-                SuccessfulRecipeHitsRepository.recipiesList.addAll(response.hits)
-
-                response = retrofitBuilder.getDairyRecipes()
                 SuccessfulRecipeHitsRepository.numberOfRecipes += response.count
                 SuccessfulRecipeHitsRepository.recipiesList.addAll(response.hits)
 
@@ -87,7 +81,8 @@ class FoodFragmentViewModel : ViewModel()
             val curRecipe = Recipe(hit.recipe.calories,
                 hit.recipe.image,
                 hit.recipe.cuisineType[0],
-                hit.recipe.label
+                hit.recipe.label,
+                hit.recipe.ingredientLines
             )
             localFoodRepository.recipes.add(curRecipe)
         }

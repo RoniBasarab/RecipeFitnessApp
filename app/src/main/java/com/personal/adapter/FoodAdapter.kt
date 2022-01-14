@@ -1,4 +1,5 @@
 package com.personal.adapter
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.personal.R
 import com.personal.data.repository.Recipe
 import com.personal.data.repository.RecipeRepository
 import com.personal.databinding.ItemFoodBinding
+import com.personal.viewmodel.logger
 
 @GlideModule
 class FoodAdapter(
@@ -20,6 +22,7 @@ class FoodAdapter(
 
         fun bind(recipe: Recipe)
         {
+            recipe.isChosen = binding.cbChosen.isChecked
             binding.tvFoodTitle.text = recipe.recipeName
             binding.tvCuisine.text = recipe.cuisineType
             binding.tvFoodCalorie.text = recipe.calories.toString()
@@ -27,16 +30,7 @@ class FoodAdapter(
                 .load(recipe.image)
                 .into(binding.imgFoodImage)
 
-            binding.cbChosen.setOnCheckedChangeListener {_, isChecked ->
-                if(isChecked)
-                {
-                    binding.root.setBackgroundResource(R.drawable.textview_black_border)
-                }
-                else
-                {
-                    binding.root.setBackgroundColor(0)
-                }
-            }
+
         }
     }
 
@@ -46,7 +40,11 @@ class FoodAdapter(
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
+        Log.d(logger,position.toString())
+
         holder.bind(foodList.recipes[position])
+
+
     }
 
     override fun getItemCount(): Int {

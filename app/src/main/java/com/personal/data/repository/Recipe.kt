@@ -5,4 +5,6 @@ data class Recipe(
     var image : String,
     var recipeName: String,
     var cuisineType: String,
+    var ingredients: List<String>,
+    var isChosen: Boolean = false
 )
