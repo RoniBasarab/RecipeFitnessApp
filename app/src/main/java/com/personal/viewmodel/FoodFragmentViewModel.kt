@@ -10,6 +10,7 @@ import com.personal.data.repository.Recipe
 import com.personal.data.repository.RecipeRepository
 import com.personal.data.repository.SuccessfulRecipeHitsRepository
 import com.personal.data.service.FoodService
+import com.personal.utils.Converters
 import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,7 +31,6 @@ class FoodFragmentViewModel : ViewModel()
 
     private suspend fun getFoodRecipes()
     {
-
 
         withContext(Dispatchers.IO)
         {
@@ -55,7 +55,7 @@ class FoodFragmentViewModel : ViewModel()
     }
 
      @SuppressLint("NotifyDataSetChanged")
-     private fun loadRecipes(adapter: FoodAdapter, loadingVisibility: ProgressBar) {
+     private fun loadRecipes(adapter: FoodAdapter, loadingVisibility: ProgressBar){
         val scope = CoroutineScope(Dispatchers.IO)
          scope.launch {
              getFoodRecipes()
@@ -65,24 +65,23 @@ class FoodFragmentViewModel : ViewModel()
                  adapter.notifyDataSetChanged()
              }
          }
-
     }
 
-     fun makeAPICall(adapter: FoodAdapter, recyclerVisibility: View, loadingVisibility: ProgressBar)
-    {
+    fun makeAPICall(adapter: FoodAdapter, loadingVisibility: ProgressBar){
         loadRecipes(adapter,loadingVisibility)
-        recyclerVisibility.visibility = View.VISIBLE
+
     }
 
-    fun UpdateLocalRepoLists()
-    {
-        for(hit in SuccessfulRecipeHitsRepository.recipiesList)
+    private fun UpdateLocalRepoLists() {
+        for((i, hit) in SuccessfulRecipeHitsRepository.recipiesList.withIndex())
         {
-            val curRecipe = Recipe(hit.recipe.calories,
-                hit.recipe.image,
-                hit.recipe.cuisineType[0],
+            val curRecipe = Recipe( i+1,
                 hit.recipe.label,
-                hit.recipe.ingredientLines
+                hit.recipe.cuisineType[0],
+                hit.recipe.calories,
+                hit.recipe.image,
+                Converters.listToJson(hit.recipe.ingredientLines),
+                false
             )
             localFoodRepository.recipes.add(curRecipe)
         }

@@ -1,11 +1,11 @@
 package com.personal.adapter
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.annotation.GlideModule
-import com.personal.R
 import com.personal.data.repository.Recipe
 import com.personal.data.repository.RecipeRepository
 import com.personal.databinding.ItemFoodBinding
@@ -22,15 +22,19 @@ class FoodAdapter(
 
         fun bind(recipe: Recipe)
         {
-            recipe.isChosen = binding.cbChosen.isChecked
-            binding.tvFoodTitle.text = recipe.recipeName
-            binding.tvCuisine.text = recipe.cuisineType
-            binding.tvFoodCalorie.text = recipe.calories.toString()
-            Glide.with(binding.root)
-                .load(recipe.image)
-                .into(binding.imgFoodImage)
+            itemView.apply {
 
+                binding.cbChosen.isChecked = recipe.expanded
 
+                recipe.expanded = binding.cbChosen.isChecked
+                binding.tvFoodTitle.text = recipe.recipeName
+                binding.tvCuisine.text = recipe.cuisineType
+                binding.tvFoodCalorie.text = recipe.calories.toString()
+                Glide.with(binding.root)
+                    .load(recipe.image)
+                    .into(binding.imgFoodImage)
+
+            }
         }
     }
 
@@ -44,10 +48,21 @@ class FoodAdapter(
 
         holder.bind(foodList.recipes[position])
 
+        holder.itemView.setOnClickListener {
+            foodList.recipes[position].expanded = !foodList.recipes[position].expanded
+            notifyItemChanged(position)
+        }
 
     }
 
     override fun getItemCount(): Int {
         return foodList.recipes.size
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateRecycler(newFoodsList: MutableList<Recipe>)
+    {
+        foodList.recipes.addAll(newFoodsList)
+        notifyDataSetChanged()
     }
 }

@@ -53,7 +53,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvFoods"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="240dp"
                 android:background="@drawable/textview_black_border"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp">

@@ -1,5 +1,5 @@
 package com.personal.view.fragments
-
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.SimpleItemAnimator
 import com.personal.R
 import com.personal.adapter.FoodAdapter
 import com.personal.data.repository.RecipeRepository
@@ -49,21 +48,21 @@ class FoodFragment : Fragment() {
         _binding = null
     }
 
-      fun setupFragment()
+      @SuppressLint("NotifyDataSetChanged")
+      private fun setupFragment()
     {
         binding.rvFoods.isVisible = false
         animateProgressBar(binding.pbLoadingBar)
 
+
         setOnClickListeners()
         foodAdapter = FoodAdapter(RecipeRepository())
         FoodViewModel = ViewModelProvider(this).get(FoodFragmentViewModel::class.java)
-        FoodViewModel.makeAPICall(foodAdapter, binding.rvFoods, binding.pbLoadingBar)
-
+        FoodViewModel.makeAPICall(foodAdapter,binding.pbLoadingBar)
 
         binding.rvFoods.adapter = foodAdapter
         binding.rvFoods.layoutManager = LinearLayoutManager(this.context)
-        (binding.rvFoods.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
-
+        binding.rvFoods.visibility = View.VISIBLE
     }
 
     private fun animateProgressBar(progress: ProgressBar)
@@ -73,7 +72,7 @@ class FoodFragment : Fragment() {
         progress.startAnimation(anim)
     }
 
-    fun setOnClickListeners()
+    private fun setOnClickListeners()
     {
         binding.btnBackToPersonDetails.setOnClickListener {
             findNavController().navigate(R.id.personDetailsFragment)

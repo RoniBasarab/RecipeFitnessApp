@@ -1,10 +1,16 @@
 package com.personal.data.repository
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
 
 data class Recipe(
-    var calories: Double,
-    var image : String,
+    var recipeId: Int,
     var recipeName: String,
     var cuisineType: String,
-    var ingredients: List<String>,
-    var isChosen: Boolean = false
+    var calories: Double,
+    var image : String,
+    var ingredients: String,
+    var expanded: Boolean = false
 )

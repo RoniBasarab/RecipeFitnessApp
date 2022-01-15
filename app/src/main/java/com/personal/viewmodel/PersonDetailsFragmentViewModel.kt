@@ -22,7 +22,6 @@ class PersonDetailsFragmentViewModel : ViewModel()
 
     fun calcBMI(kg: String, m: String): String {
         BMI = ((kg.toDouble() / Math.pow(m.toDouble()/100.0 ,2.0)).toString())
-        PersonDetails.BMI = BMI
         return BMI as String
 
     }
@@ -41,24 +40,20 @@ class PersonDetailsFragmentViewModel : ViewModel()
             "Male" ->
                 when (fitnessStatus) {
                     FitnessStatus.SEDENTARY -> {
-                        PersonDetails.BMR = BMR
                         BMR = (BMRmale*1.2).toString()
                         return BMR
                     }
                     FitnessStatus.LIGHTLY -> {
-                        PersonDetails.BMR = BMR
                         BMR = (BMRmale*1.375).toString()
                         return BMR
                     }
 
                     FitnessStatus.MODERATELY ->{
-                        PersonDetails.BMR = BMR
                         BMR = (BMRmale*1.55).toString()
                         return BMR
                     }
 
                     FitnessStatus.VERY ->{
-                        PersonDetails.BMR = BMR
                         BMR = (BMRmale*1.725).toString()
                         return BMR
 
@@ -69,24 +64,20 @@ class PersonDetailsFragmentViewModel : ViewModel()
                 when (fitnessStatus) {
 
                     FitnessStatus.SEDENTARY -> {
-                        PersonDetails.BMR = BMR
                         BMR = (BMRfemale*1.2).toString()
                         return BMR
                     }
                     FitnessStatus.LIGHTLY -> {
-                        PersonDetails.BMR = BMR
                         BMR = (BMRfemale*1.375).toString()
                         return BMR
                     }
 
                     FitnessStatus.MODERATELY ->{
-                        PersonDetails.BMR = BMR
                         BMR = (BMRfemale*1.55).toString()
                         return BMR
                     }
 
                     FitnessStatus.VERY ->{
-                        PersonDetails.BMR = BMR
                         BMR = (BMRfemale*1.725).toString()
                         return BMR
 
@@ -95,20 +86,5 @@ class PersonDetailsFragmentViewModel : ViewModel()
                 }
         }
         return ""
-    }
-
-     fun isDataInitialized(): Boolean {
-        if((PersonDetails.BMI.isNullOrEmpty() &&
-            PersonDetails.BMR.isNullOrEmpty() &&
-            PersonDetails.gender.isNullOrEmpty() &&
-            PersonDetails.age.equals(0) &&
-            PersonDetails.height.equals(0) &&
-            PersonDetails.weight.equals(0) &&
-            PersonDetails.fitnessStatus.equals(FitnessStatus.UNINITIALIZED)
-        ))
-        {
-            return false
-        }
-        return true
     }
 }

@@ -70,7 +70,7 @@ class PersonDetailsFragment : Fragment() {
         }
 
         binding.btnCalculateBMI.setOnClickListener {
-            if((binding.rbMale.isChecked || binding.rbFemale.isChecked) && personDetailsViewModel.isDataInitialized() == false)
+            if((binding.rbMale.isChecked || binding.rbFemale.isChecked))
             {
                 val age = binding.etAgeInput.text.toString().toInt()
                 val height = binding.etHeightInput.text.toString().toInt()
@@ -78,10 +78,6 @@ class PersonDetailsFragment : Fragment() {
                 val gender: String
                 var fitnessStatus: FitnessStatus = FitnessStatus.SEDENTARY
                 val fitnessStatusChosen = binding.txtChosenFitnessLevel.text.toString()
-
-                PersonDetails.age = age
-                PersonDetails.height = height
-                PersonDetails.weight = weight
 
 
                 if (binding.rbMale.isChecked)
@@ -95,8 +91,6 @@ class PersonDetailsFragment : Fragment() {
                     "Moderately Active" -> fitnessStatus = FitnessStatus.MODERATELY
                     "Very Active" -> fitnessStatus = FitnessStatus.VERY
                 }
-
-                PersonDetails.fitnessStatus = fitnessStatus
 
                 binding.txtBMIResult.text =
                     personDetailsViewModel.calcBMI(weight.toString(), height.toString())
