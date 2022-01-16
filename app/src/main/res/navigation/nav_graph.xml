@@ -35,5 +35,13 @@
         <action
             android:id="@+id/action_foodFragment_to_personDetailsFragment"
             app:destination="@id/personDetailsFragment" />
+        <action
+            android:id="@+id/action_foodFragment_to_doneFragment"
+            app:destination="@id/doneFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/doneFragment"
+        android:name="com.personal.view.fragments.DoneFragment"
+        android:label="fragment_done"
+        tools:layout="@layout/fragment_done" />
 </navigation>

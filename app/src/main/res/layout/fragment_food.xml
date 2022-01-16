@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".view.fragments.FoodFragment"
-    android:background="#37D175">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,17 +24,26 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearlayoutWeekPicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+
+        <TextView
+            android:id="@+id/txtChooseWeekDay"
+            android:layout_margin="2dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="TODO: ADD DATE PICKER">
+            android:layout_weight="50"
+            android:visibility="visible"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:text="Click here to choose which day of the week"
+            android:textAlignment="center"
+            android:background="@drawable/textview_black_border"
+            >
 
-        </Button>
+        </TextView>
 
 
 
@@ -76,7 +85,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -84,7 +94,7 @@
             android:text="Search"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginTop="20dp"
+
             android:textSize="25sp"
             android:textColor="@color/black"
             android:layout_weight="30">
@@ -98,7 +108,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginTop="20dp"
             android:layout_weight="30"
             android:textColor="@color/black">
 
@@ -106,6 +115,7 @@
         </EditText>
 
         <TextView
+            android:id="@+id/txtCalorieOverload"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="30"

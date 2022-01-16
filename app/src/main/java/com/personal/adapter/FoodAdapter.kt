@@ -1,4 +1,5 @@
 package com.personal.adapter
+
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,18 +9,21 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.annotation.GlideModule
 import com.personal.data.repository.Recipe
 import com.personal.data.repository.RecipeRepository
+import com.personal.data.repository.WeekMealSchedule
 import com.personal.databinding.ItemFoodBinding
 import com.personal.viewmodel.logger
 
 @GlideModule
 class FoodAdapter(
-    var foodList: RecipeRepository
+    var foodList: RecipeRepository,
+    var dayOfWeek: String
 )  : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>()
 {
+    var totalMealCalories: Double = 0.0
+
 
     class FoodViewHolder(private val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root)
     {
-
         fun bind(recipe: Recipe)
         {
             itemView.apply {
@@ -33,7 +37,6 @@ class FoodAdapter(
                 Glide.with(binding.root)
                     .load(recipe.image)
                     .into(binding.imgFoodImage)
-
             }
         }
     }
@@ -51,18 +54,52 @@ class FoodAdapter(
         holder.itemView.setOnClickListener {
             foodList.recipes[position].expanded = !foodList.recipes[position].expanded
             notifyItemChanged(position)
-        }
 
+            if (foodList.recipes[position].expanded) {
+                totalMealCalories += foodList.recipes[position].calories
+                addOrRemoveRecipeFromWeek(foodList.recipes[position],"add")
+            }
+            else {
+                totalMealCalories -= foodList.recipes[position].calories
+                addOrRemoveRecipeFromWeek(foodList.recipes[position],"remove")
+            }
+
+        }
     }
 
     override fun getItemCount(): Int {
         return foodList.recipes.size
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateRecycler(newFoodsList: MutableList<Recipe>)
+    private fun addOrRemoveRecipeFromWeek(recipe: Recipe, action: String) {
+        when(action)
+        {
+            "add" -> {
+                WeekMealSchedule.week.getOrPut(dayOfWeek, ::mutableListOf).add(recipe)
+            }
+            "remove" -> {
+                if(WeekMealSchedule.week[dayOfWeek] != null)
+                    WeekMealSchedule.week[dayOfWeek]?.remove(recipe)
+            }
+        }
+    }
+
+    fun updateDayOfWeek(day: String)
     {
-        foodList.recipes.addAll(newFoodsList)
+        this.dayOfWeek = day
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun uncheckMealsOnNewDayPick()
+    {
+        for(recipe in foodList.recipes)
+        {
+            if(recipe.expanded)
+            {
+                recipe.expanded = false
+
+            }
+        }
         notifyDataSetChanged()
     }
 }

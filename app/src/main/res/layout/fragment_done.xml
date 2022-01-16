@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.fragments.DoneFragment"
+    android:background="@color/white">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:layout_margin="5dp">
+    </View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="We're Done!"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textAlignment="center">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnGoogleCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_design"
+            android:text="Upload to your Google Calendar"
+            android:textAllCaps="false">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnShareWhatsapp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:layout_margin="5dp"
+            android:background="@drawable/button_design"
+            android:text="Share on Whatsapp"
+            android:textAllCaps="false">
+
+        </Button>
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:layout_margin="5dp">
+    </View>
+
+
+
+
+</LinearLayout>

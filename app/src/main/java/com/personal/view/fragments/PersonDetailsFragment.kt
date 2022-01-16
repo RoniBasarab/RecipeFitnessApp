@@ -117,7 +117,16 @@ class PersonDetailsFragment : Fragment() {
         }
 
         binding.btnPressToRecyclerView.setOnClickListener {
-            findNavController().navigate(R.id.foodFragment)
+            if(PersonDetails.dataIsInitialized())
+            {
+                findNavController().navigate(R.id.foodFragment)
+            }
+            else
+            {
+                binding.txtCalorieIntakeAllowed.setTextColor(Color.RED)
+                binding.txtCalorieIntakeAllowed.text = "FILL FORM"
+                binding.txtCalorieIntakeAllowed.visibility = View.VISIBLE
+            }
         }
     }
 
